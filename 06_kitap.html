@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>«Үйшік» — Цифрлық ертегі кітабы</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: #1A1A1A;
+    min-height: 100vh;
+    padding: 1.5rem;
+    color: #FFF7ED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .container { max-width: 700px; width: 100%; }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 0.4rem;
+    color: #FF6B1A;
+    font-weight: 800;
+  }
+  .subtitle { text-align: center; font-size: 1rem; font-weight: 600; color: rgba(255,250,243,0.6); margin-bottom: 1.5rem; }
+  .book {
+    background: #FFFAF3;
+    color: #1A1A1A;
+    border: 4px solid #FFF7ED;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 10px 10px 0 #E8590C;
+    padding: 2.5rem 2rem;
+    min-height: 450px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+  .page-emoji { font-size: clamp(4rem, 12vw, 7rem); margin-bottom: 1.2rem; display: block; }
+  .page-title { font-family: 'Fraunces', serif; font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; color: #E8590C; margin-bottom: 1rem; line-height: 1.2; }
+  .page-text { font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 500; line-height: 1.6; color: #1A1A1A; max-width: 480px; margin: 0 auto; }
+  .page-num { position: absolute; bottom: 1rem; right: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: rgba(26,26,26,0.5); font-weight: 700; letter-spacing: 0.1em; }
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+  .nav-btn {
+    background: #E8590C;
+    color: #fff;
+    border: 3px solid #FFF7ED;
+    padding: 0.9rem 1.5rem;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 130px;
+  }
+  .nav-btn:hover:not(:disabled) { background: #FF6B1A; }
+  .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .progress {
+    flex-grow: 1;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFF7ED;
+  }
+  .dots {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,250,243,0.3);
+    transition: background 0.2s;
+  }
+  .dot.active { background: #FF6B1A; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>«Үйшік» ертегісі</h1>
+  <p class="subtitle">Қазақ халық ертегісі — цифрлық кітап</p>
+
+  <div class="book">
+    <div class="page" id="page"></div>
+    <div class="page-num" id="pageNum"></div>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <div class="controls">
+    <button class="nav-btn" id="prevBtn" onclick="prev()">← Артқа</button>
+    <div class="progress"><span id="cur">1</span> / <span id="total">7</span></div>
+    <button class="nav-btn" id="nextBtn" onclick="next()">Алға →</button>
+  </div>
+</div>
+
+<script>
+  const pages = [
+    {
+      emoji: '🏠',
+      title: 'Үйшік',
+      text: 'Бір кезде, орманның ортасында кішкене үйшік тұратын. Ол үйшік иесіз, бос тұратын. Сонда бір күні...'
+    },
+    {
+      emoji: '🐭',
+      title: 'Тышқан келді',
+      text: 'Тышқан жүгіріп өтіп бара жатып, үйшікті көрді. «Уу, қандай тамаша үйшік! Кіріп тұрайын» — деді де, үйшікке кірді.'
+    },
+    {
+      emoji: '🐸',
+      title: 'Бақа келді',
+      text: 'Көп ұзамай Бақа да келді: «Үйшікте кім тұрады?» — деп сұрады. «Мен — Тышқан. Жүр, бірге тұрайық!» — деді Тышқан.'
+    },
+    {
+      emoji: '🐰🦊',
+      title: 'Қоян мен Түлкі',
+      text: 'Сосын Қоян мен Түлкі қосылды. Олар да үйшікке кірді. Достасып, бірге өмір сүре бастады.'
+    },
+    {
+      emoji: '🐺',
+      title: 'Қасқыр келді',
+      text: 'Бір күні Қасқыр да келді. Барлығы оған рұқсат берді. Үйшік толды, бірақ бәрі ынтымақпен тұрды.'
+    },
+    {
+      emoji: '🐻',
+      title: 'Аю келді',
+      text: 'Кенеттен Аю келді! Ол үйшікке сыймай қалды. Үйшіктің төбесіне отырғанда, үй сынды!'
+    },
+    {
+      emoji: '🤝',
+      title: 'Жаңа үй',
+      text: 'Достар реніш қылмады. Бәрі бірге жұмыс істеп, үлкен, жаңа үй салды. Сонда олар бақытты тұра берді.\n\n— Соңы —'
+    },
+  ];
+
+  let current = 0;
+
+  function render() {
+    const p = pages[current];
+    document.getElementById('page').innerHTML = `
+      <span class="page-emoji">${p.emoji}</span>
+      <h2 class="page-title">${p.title}</h2>
+      <p class="page-text">${p.text}</p>
+    `;
+    document.getElementById('pageNum').textContent = `БЕТ ${current + 1}`;
+    document.getElementById('cur').textContent = current + 1;
+    document.getElementById('total').textContent = pages.length;
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').disabled = current === pages.length - 1;
+    renderDots();
+  }
+
+  function renderDots() {
+    const dots = document.getElementById('dots');
+    dots.innerHTML = '';
+    for (let i = 0; i < pages.length; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === current ? ' active' : '');
+      d.onclick = () => { current = i; render(); };
+      d.style.cursor = 'pointer';
+      dots.appendChild(d);
+    }
+  }
+
+  function next() { if (current < pages.length - 1) { current++; render(); } }
+  function prev() { if (current > 0) { current--; render(); } }
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  render();
+</script>
+
+</body>
+</html>

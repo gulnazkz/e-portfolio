@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Балалардың рефлексиясы</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: linear-gradient(135deg, #FFE5D0 0%, #FFFAF3 50%, #D4EDDA 100%);
+    min-height: 100vh;
+    padding: 1.5rem;
+    color: #1A1A1A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .container { max-width: 800px; width: 100%; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 0.5rem; color: #E8590C; font-weight: 800; }
+  .subtitle { text-align: center; font-size: 1.15rem; font-weight: 600; color: #4A4A4A; margin-bottom: 2.5rem; }
+  .question-box {
+    background: #1A1A1A;
+    color: #FFF7ED;
+    padding: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 6px 6px 0 #E8590C;
+    border: 3px solid #1A1A1A;
+  }
+  .question-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 700;
+  }
+  .smileys {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 500px) { .smileys { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; } }
+  .smiley {
+    background: #fff;
+    border: 3px solid #1A1A1A;
+    box-shadow: 5px 5px 0 #1A1A1A;
+    padding: 1.5rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .smiley:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 #E8590C; background: #FFE5D0; }
+  .smiley.selected {
+    background: #FFE5D0;
+    border-color: #E8590C;
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 #E8590C;
+  }
+  .smiley-emoji { font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 0.5rem; display: block; }
+  .smiley-label { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: #1A1A1A; }
+  .smiley:nth-child(1):hover, .smiley:nth-child(1).selected { background: #FECACA; border-color: #DC2626; box-shadow: 8px 8px 0 #DC2626; }
+  .smiley:nth-child(2):hover, .smiley:nth-child(2).selected { background: #FEF3C7; border-color: #D97706; box-shadow: 8px 8px 0 #D97706; }
+  .smiley:nth-child(3):hover, .smiley:nth-child(3).selected { background: #D4EDDA; border-color: #1B8B5A; box-shadow: 8px 8px 0 #1B8B5A; }
+  .response-box {
+    background: #fff;
+    border: 3px solid #1A1A1A;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 5px 5px 0 #1A1A1A;
+    display: none;
+  }
+  .response-box.show { display: block; animation: pop 0.4s; }
+  @keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  .response-emoji { font-size: 4rem; margin-bottom: 0.8rem; }
+  .response-title { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 800; color: #E8590C; margin-bottom: 0.5rem; }
+  .response-text { font-size: 1rem; font-weight: 600; color: #4A4A4A; line-height: 1.5; }
+  .controls { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+  .btn {
+    background: #E8590C;
+    color: #fff;
+    border: 3px solid #1A1A1A;
+    padding: 0.9rem 1.5rem;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #1A1A1A;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #1A1A1A; }
+  .stats {
+    background: #FFFAF3;
+    border: 3px solid #1A1A1A;
+    padding: 1rem;
+    margin-top: 2rem;
+    display: none;
+  }
+  .stats.show { display: block; }
+  .stats-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; text-align: center; }
+  .stats-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+  .stats-bar-emoji { font-size: 1.3rem; }
+  .stats-bar-track { flex-grow: 1; height: 16px; background: #FFE5D0; border: 1.5px solid #1A1A1A; position: relative; }
+  .stats-bar-fill { height: 100%; transition: width 0.6s; }
+  .stats-bar-count { font-family: 'JetBrains Mono', monospace; font-weight: 700; min-width: 30px; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Сабақ қалай өтті?</h1>
+  <p class="subtitle">Бүгінгі сабаққа қалай көңіл толды? Бір смайликті таңдаңыз 👇</p>
+
+  <div class="question-box">
+    <div class="question-text">Сізге сабақ ұнады ма?</div>
+  </div>
+
+  <div class="smileys" id="smileys">
+    <div class="smiley" onclick="select('sad', this)">
+      <span class="smiley-emoji">😢</span>
+      <div class="smiley-label">Ұнамады</div>
+    </div>
+    <div class="smiley" onclick="select('neutral', this)">
+      <span class="smiley-emoji">😐</span>
+      <div class="smiley-label">Орташа</div>
+    </div>
+    <div class="smiley" onclick="select('happy', this)">
+      <span class="smiley-emoji">😊</span>
+      <div class="smiley-label">Тамаша!</div>
+    </div>
+  </div>
+
+  <div class="response-box" id="response">
+    <div class="response-emoji" id="respEmoji">🌟</div>
+    <div class="response-title" id="respTitle">Рахмет!</div>
+    <div class="response-text" id="respText">Сіздің пікіріңіз маңызды.</div>
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stats-title">📊 Бүгінгі дауыстар</div>
+    <div class="stats-bar">
+      <span class="stats-bar-emoji">😊</span>
+      <div class="stats-bar-track"><div class="stats-bar-fill" id="bar-happy" style="background:#1B8B5A; width:0%;"></div></div>
+      <span class="stats-bar-count" id="count-happy">0</span>
+    </div>
+    <div class="stats-bar">
+      <span class="stats-bar-emoji">😐</span>
+      <div class="stats-bar-track"><div class="stats-bar-fill" id="bar-neutral" style="background:#D97706; width:0%;"></div></div>
+      <span class="stats-bar-count" id="count-neutral">0</span>
+    </div>
+    <div class="stats-bar">
+      <span class="stats-bar-emoji">😢</span>
+      <div class="stats-bar-track"><div class="stats-bar-fill" id="bar-sad" style="background:#DC2626; width:0%;"></div></div>
+      <span class="stats-bar-count" id="count-sad">0</span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" onclick="resetAll()">🔄 Қайтадан</button>
+  </div>
+</div>
+
+<script>
+  // Stats stored in memory only (no localStorage as it doesn't work in artifacts)
+  const counts = { happy: 0, neutral: 0, sad: 0 };
+
+  const responses = {
+    happy: { emoji: '🌟', title: 'Тамаша!', text: 'Сабақ көңіліңізге толғанына қуанамыз! Жарайсыңдар!' },
+    neutral: { emoji: '🤔', title: 'Рахмет!', text: 'Келесі сабақта тағы да қызықты болады! Ынтаңызды арттырайық.' },
+    sad: { emoji: '🤗', title: 'Қам жемеңіз!', text: 'Келесі жолы тағы да тырысамыз. Сіз қандай сабақ ұнататыныңызды бөлісіңіз!' },
+  };
+
+  function select(type, element) {
+    // Reset all selected
+    document.querySelectorAll('.smiley').forEach(s => s.classList.remove('selected'));
+    element.classList.add('selected');
+
+    // Update counts
+    counts[type]++;
+
+    // Show response
+    const r = responses[type];
+    document.getElementById('respEmoji').textContent = r.emoji;
+    document.getElementById('respTitle').textContent = r.title;
+    document.getElementById('respText').textContent = r.text;
+    document.getElementById('response').classList.add('show');
+
+    // Show stats
+    updateStats();
+  }
+
+  function updateStats() {
+    const total = counts.happy + counts.neutral + counts.sad;
+    document.getElementById('stats').classList.add('show');
+    document.getElementById('count-happy').textContent = counts.happy;
+    document.getElementById('count-neutral').textContent = counts.neutral;
+    document.getElementById('count-sad').textContent = counts.sad;
+    if (total > 0) {
+      document.getElementById('bar-happy').style.width = (counts.happy / total * 100) + '%';
+      document.getElementById('bar-neutral').style.width = (counts.neutral / total * 100) + '%';
+      document.getElementById('bar-sad').style.width = (counts.sad / total * 100) + '%';
+    }
+  }
+
+  function resetAll() {
+    counts.happy = 0;
+    counts.neutral = 0;
+    counts.sad = 0;
+    document.querySelectorAll('.smiley').forEach(s => s.classList.remove('selected'));
+    document.getElementById('response').classList.remove('show');
+    document.getElementById('stats').classList.remove('show');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Молдабек Гульчехра Ақынқызы — Е-портфолио</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8590C;
+    --orange-bright: #FF6B1A;
+    --orange-deep: #B83D00;
+    --orange-soft: #FFE5D0;
+    --green: #1B8B5A;
+    --green-deep: #0F5132;
+    --green-soft: #D4EDDA;
+    --cream: #FFF7ED;
+    --paper: #FFFAF3;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --gold: #D97706;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255, 250, 243, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--ink);
+    padding: 1.1rem 2rem;
+  }
+  .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--orange); font-style: italic; }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; flex-wrap: wrap; }
+  .nav-links a { text-decoration: none; color: var(--ink); font-size: 1rem; font-weight: 600; transition: color 0.2s; position: relative; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 3px; background: var(--orange); transition: width 0.3s; }
+  .nav-links a:hover::after { width: 100%; }
+  @media (max-width: 900px) { .nav-links { display: none; } }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 9rem 2rem 4rem;
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(26,26,26,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(26,26,26,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; top: -150px; right: -150px; width: 500px; height: 500px;
+    background: var(--orange); border-radius: 50%; opacity: 0.08;
+  }
+  .hero-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero-top {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 500;
+    color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.1em;
+    flex-wrap: wrap;
+  }
+  .hero-top .dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items: center; }
+  @media (max-width: 968px) { .hero-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  .hero h1 {
+    font-family: 'Fraunces', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800;
+    line-height: 0.95; color: var(--ink); margin-bottom: 2rem; letter-spacing: -0.04em;
+  }
+  .hero h1 .italic { font-style: italic; color: var(--orange); font-weight: 600; }
+  .hero h1 .underline { position: relative; display: inline-block; }
+  .hero h1 .underline::after { content: ''; position: absolute; bottom: 8px; left: -2px; right: -2px; height: 14px; background: var(--orange); opacity: 0.25; z-index: -1; transform: skewX(-3deg); }
+  .hero-tagline { font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 2.5rem; max-width: 600px; line-height: 1.5; }
+  .hero-tagline strong { background: var(--orange); color: var(--white); padding: 0.1em 0.4em; font-weight: 700; }
+  .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 2.5rem; max-width: 650px; }
+  .stat { background: var(--white); border: 2px solid var(--ink); padding: 1.2rem 0.9rem; box-shadow: 5px 5px 0 var(--ink); transition: transform 0.2s, box-shadow 0.2s; }
+  .stat:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--orange); }
+  .stat-number { font-family: 'Fraunces', serif; font-size: 2.7rem; font-weight: 800; color: var(--orange); line-height: 0.9; margin-bottom: 0.4rem; letter-spacing: -0.03em; }
+  .stat:nth-child(2) .stat-number { color: var(--green); }
+  .stat:nth-child(3) .stat-number { color: var(--gold); }
+  .stat:nth-child(4) .stat-number { color: var(--orange-deep); }
+  .stat-label { font-size: 0.75rem; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.04em; }
+  .hero-contact-row { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+  .hc-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 600; color: var(--ink); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+  .hc-item:hover { color: var(--orange); }
+  .hc-item svg { width: 22px; height: 22px; color: var(--orange); flex-shrink: 0; }
+
+  /* Hero portrait - REAL PHOTO */
+  .hero-portrait-wrap { position: relative; display: flex; justify-content: center; }
+  .portrait-deco { position: absolute; top: 25px; left: 25px; width: 100%; max-width: 380px; aspect-ratio: 3/4; border: 3px solid var(--ink); z-index: 0; background: var(--green-soft); }
+  .portrait {
+    position: relative; width: 100%; max-width: 380px; aspect-ratio: 3/4;
+    border: 3px solid var(--ink); z-index: 1; overflow: hidden;
+    background: var(--ink);
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait-badge {
+    position: absolute; bottom: -25px; right: -25px; background: var(--green); color: var(--white);
+    border: 3px solid var(--ink); padding: 1rem 1.5rem; font-family: 'Fraunces', serif;
+    font-weight: 700; font-size: 1rem; transform: rotate(-3deg); z-index: 2; box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  /* MARQUEE */
+  .marquee { background: var(--ink); color: var(--paper); padding: 1.2rem 0; overflow: hidden; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); position: relative; z-index: 3; }
+  .marquee-track { display: flex; gap: 3rem; white-space: nowrap; animation: scroll 30s linear infinite; font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; font-size: 1.5rem; }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 1rem; }
+  .marquee-track .sep { color: var(--orange); }
+  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 7rem 2rem; position: relative; }
+  .container { max-width: 1300px; margin: 0 auto; }
+  .section-header { margin-bottom: 4rem; }
+  .section-tag { display: inline-flex; align-items: center; gap: 0.7rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .section-tag::before { content: ''; width: 30px; height: 3px; background: var(--orange); }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(2.3rem, 4.5vw, 4rem); font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; max-width: 900px; }
+  .section-title .italic { font-style: italic; color: var(--orange); font-weight: 600; }
+  .section-intro { font-size: 1.25rem; color: var(--ink); font-weight: 500; max-width: 750px; margin-top: 1.5rem; line-height: 1.5; }
+
+  /* ABOUT */
+  .about { background: var(--white); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start; }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-text p { font-size: 1.15rem; font-weight: 500; color: var(--ink); margin-bottom: 1.5rem; line-height: 1.65; }
+  .about-text p:first-child::first-letter { font-family: 'Fraunces', serif; font-size: 5rem; font-weight: 800; color: var(--orange); float: left; line-height: 0.85; margin: 0.4rem 0.7rem 0 0; }
+  .about-text mark { background: var(--orange-soft); color: var(--ink); padding: 0.05em 0.3em; font-weight: 700; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 14px; top: 10px; bottom: 10px; width: 4px; background: var(--ink); }
+  .tl-item { position: relative; margin-bottom: 2.2rem; }
+  .tl-item::before { content: ''; position: absolute; left: -2.5rem; top: 6px; width: 32px; height: 32px; background: var(--orange); border: 3px solid var(--ink); border-radius: 50%; }
+  .tl-item:nth-child(2)::before { background: var(--green); }
+  .tl-item:nth-child(3)::before { background: var(--gold); }
+  .tl-item:nth-child(4)::before { background: var(--orange-bright); }
+  .tl-item:nth-child(5)::before { background: var(--green-deep); }
+  .tl-item:nth-child(6)::before { background: var(--ink); }
+  .tl-year { font-family: 'Fraunces', serif; font-size: 2.3rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+  .tl-title { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+  .tl-desc { font-size: 1rem; color: var(--ink-soft); font-weight: 500; line-height: 1.5; }
+
+  /* CREDO */
+  .credo { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; text-align: center; }
+  .credo::before { content: '"'; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); font-family: 'Fraunces', serif; font-size: 30rem; color: var(--orange); opacity: 0.15; line-height: 1; font-weight: 900; }
+  .credo .section-tag { color: var(--orange-bright); }
+  .credo .section-tag::before { background: var(--orange-bright); }
+  .credo .section-title { color: var(--paper); text-align: center; margin: 0 auto; }
+  .credo-content { position: relative; z-index: 1; max-width: 1000px; margin: 3rem auto 0; }
+  .credo-text { font-family: 'Fraunces', serif; font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.4; color: var(--paper); font-style: italic; font-weight: 400; }
+  .credo-text .hi { color: var(--orange-bright); font-weight: 700; font-style: normal; background: rgba(255, 107, 26, 0.1); padding: 0.05em 0.3em; }
+  .credo-signature { margin-top: 3rem; font-family: 'JetBrains Mono', monospace; color: var(--orange-bright); font-weight: 700; letter-spacing: 0.2em; font-size: 1rem; }
+  .credo-signature::before, .credo-signature::after { content: '—'; margin: 0 1rem; }
+
+  /* DOC CARDS - with real images */
+  .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+  .doc-card {
+    background: var(--white); border: 3px solid var(--ink);
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 7px 7px 0 var(--ink);
+    cursor: pointer;
+    display: flex; flex-direction: column;
+  }
+  .doc-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--orange); }
+  .doc-image {
+    aspect-ratio: 4/3;
+    background: var(--cream);
+    border-bottom: 3px solid var(--ink);
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .doc-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .doc-card:hover .doc-image img { transform: scale(1.05); }
+  .doc-image .zoom-hint {
+    position: absolute;
+    bottom: 10px; right: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.4rem 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .doc-card:hover .zoom-hint { opacity: 1; }
+  .doc-content { padding: 1.6rem; flex-grow: 1; display: flex; flex-direction: column; }
+  .doc-tag { display: inline-block; background: var(--ink); color: var(--paper); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; align-self: flex-start; }
+  .doc-title { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.2; }
+  .doc-info { font-size: 0.95rem; color: var(--ink); font-weight: 500; line-height: 1.5; flex-grow: 1; }
+  .doc-info strong { color: var(--orange); }
+
+  /* EDUCATION */
+  .education { background: var(--cream); }
+
+  /* ACHIEVEMENTS */
+  .achievements { background: var(--white); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+  .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2rem; }
+  .ach-card { position: relative; background: var(--white); border: 3px solid var(--ink); box-shadow: 7px 7px 0 var(--ink); transition: all 0.2s; cursor: pointer; overflow: hidden; display: flex; flex-direction: column; }
+  .ach-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--green); }
+  .ach-img-wrap { aspect-ratio: 4/3; overflow: hidden; border-bottom: 3px solid var(--ink); position: relative; }
+  .ach-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .ach-card:hover .ach-img-wrap img { transform: scale(1.05); }
+  .ach-body { padding: 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .ach-place-row { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.3rem; }
+  .ach-place { font-family: 'Fraunces', serif; font-size: 3.2rem; font-weight: 800; color: var(--orange); line-height: 0.85; letter-spacing: -0.04em; }
+  .ach-card:nth-child(2) .ach-place { color: var(--green); }
+  .ach-card:nth-child(3) .ach-place { color: var(--gold); }
+  .ach-card:nth-child(4) .ach-place { color: var(--orange-bright); }
+  .ach-card:nth-child(5) .ach-place { color: var(--green-deep); }
+  .ach-year { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; color: var(--paper); background: var(--ink); padding: 0.35rem 0.8rem; letter-spacing: 0.1em; align-self: flex-end; }
+  .ach-name { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 700; line-height: 1.2; color: var(--ink); }
+  .ach-desc { font-size: 0.95rem; line-height: 1.5; font-weight: 500; color: var(--ink-soft); }
+
+  /* PUBLICATIONS - new section */
+  .publication { background: var(--cream); }
+  .pub-feature {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: var(--white);
+    border: 3px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+    padding: 2.5rem;
+  }
+  @media (max-width: 900px) { .pub-feature { grid-template-columns: 1fr; } }
+  .pub-cover {
+    cursor: pointer;
+    border: 3px solid var(--ink);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 6px 6px 0 var(--orange);
+  }
+  .pub-cover:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--orange); }
+  .pub-cover img { width: 100%; display: block; }
+  .pub-tag { display: inline-block; background: var(--orange); color: var(--white); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; padding: 0.4rem 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .pub-title { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 800; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; }
+  .pub-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--ink-soft); font-weight: 600; margin-bottom: 1.2rem; }
+  .pub-desc { font-size: 1.05rem; line-height: 1.6; color: var(--ink); margin-bottom: 1.5rem; }
+  .pub-article-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.9rem 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .pub-article-btn:hover { background: var(--orange); }
+
+  /* ACTIVITIES */
+  .activities { background: var(--white); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+  .activity-block { margin-bottom: 3rem; }
+  .activity-block h3 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .activity-block h3::before { content: ''; width: 12px; height: 12px; background: var(--orange); }
+  .activity-block:nth-child(2) h3::before { background: var(--green); }
+  .activity-block:nth-child(3) h3::before { background: var(--gold); }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .g-item {
+    aspect-ratio: 4/3;
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+  .g-item::after {
+    content: '🔍';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--ink);
+    color: var(--white);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 2;
+  }
+  .g-item:hover::after { opacity: 1; }
+  .g-item:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--orange); }
+  .g-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+  .g-item:hover .g-photo { transform: scale(1.05); }
+
+  /* METHODOLOGY */
+  .methodology { background: var(--cream); }
+  .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .m-card { background: var(--white); border: 3px solid var(--ink); padding: 2rem 1.5rem; text-align: center; transition: all 0.2s; position: relative; }
+  .m-card:hover { transform: translateY(-5px); box-shadow: 5px 5px 0 var(--orange); }
+  .m-icon { width: 72px; height: 72px; margin: 0 auto 1.2rem; background: var(--orange); border: 3px solid var(--ink); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+  .m-card:nth-child(3n+2) .m-icon { background: var(--green); }
+  .m-card:nth-child(3n+3) .m-icon { background: var(--gold); }
+  .m-card:nth-child(3n+4) .m-icon { background: var(--orange-bright); }
+  .m-name { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 700; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.15; }
+  .m-desc { font-size: 0.95rem; color: var(--ink); font-weight: 500; line-height: 1.45; }
+
+  /* DIGITAL */
+  .digital { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+  .digital::before { content: ''; position: absolute; top: 100px; right: -150px; width: 400px; height: 400px; background: var(--orange); border-radius: 50%; opacity: 0.15; }
+  .digital::after { content: ''; position: absolute; bottom: 100px; left: -150px; width: 350px; height: 350px; background: var(--green); border-radius: 50%; opacity: 0.15; }
+  .digital .section-tag { color: var(--orange-bright); }
+  .digital .section-tag::before { background: var(--orange-bright); }
+  .digital .section-title { color: var(--paper); }
+  .digital .section-title .italic { color: var(--orange-bright); }
+  .digital .section-intro { color: rgba(255,250,243,0.85); }
+  .d-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; position: relative; z-index: 1; }
+  .d-card { background: rgba(255,250,243,0.07); border: 2px solid rgba(255,250,243,0.2); padding: 2rem; text-decoration: none; color: var(--paper); display: block; transition: all 0.2s; position: relative; }
+  .d-card:hover { background: var(--orange); border-color: var(--orange); transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--white); }
+  .d-icon { width: 64px; height: 64px; background: var(--orange); border: 2px solid var(--paper); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; }
+  .d-card:nth-child(3n+2) .d-icon { background: var(--green); }
+  .d-card:nth-child(3n+3) .d-icon { background: var(--gold); }
+  .d-card:hover .d-icon { background: var(--white); border-color: var(--ink); }
+  .d-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.8rem; line-height: 1.2; }
+  .d-desc { font-size: 1rem; color: rgba(255,250,243,0.8); margin-bottom: 1.2rem; line-height: 1.5; font-weight: 500; }
+  .d-card:hover .d-desc { color: var(--white); }
+  .d-link { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'JetBrains Mono', monospace; color: var(--orange-bright); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  .d-card:hover .d-link { color: var(--white); }
+  .d-card:nth-child(3n+2) .d-link { color: #34D399; }
+  .d-card:nth-child(3n+2):hover .d-link { color: var(--white); }
+  .d-card:nth-child(3n+3) .d-link { color: #FBBF24; }
+  .d-card:nth-child(3n+3):hover .d-link { color: var(--white); }
+
+  /* CONTACT */
+  .contact { background: var(--orange); color: var(--white); text-align: center; }
+  .contact .section-tag { color: var(--ink); }
+  .contact .section-tag::before { background: var(--ink); }
+  .contact .section-title { color: var(--white); margin: 0 auto; }
+  .contact .section-title .italic { color: var(--ink); }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 3rem auto 0; }
+  .c-card { background: var(--white); border: 3px solid var(--ink); padding: 1.8rem 1.4rem; color: var(--ink); text-align: left; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 5px 5px 0 var(--ink); text-decoration: none; display: flex; flex-direction: column; cursor: pointer; }
+  .c-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--ink); }
+  a.c-card:hover .c-icon { background: var(--ink); transition: background 0.2s; }
+  .c-icon { width: 56px; height: 56px; background: var(--orange); border: 2px solid var(--ink); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.2rem; transition: background 0.2s; }
+  .c-card:nth-child(2) .c-icon { background: #25D366; } /* WhatsApp green */
+  .c-card:nth-child(3) .c-icon { background: var(--orange-deep); }
+  .c-card:nth-child(4) .c-icon { background: #E1306C; } /* Instagram pink */
+  .c-card:nth-child(5) .c-icon { background: var(--ink); }
+  .c-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+  .c-value { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); line-height: 1.3; word-break: break-word; flex-grow: 1; margin-bottom: 0.8rem; }
+  .c-action { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.08em; margin-top: auto; }
+  a.c-card:hover .c-action { color: var(--ink); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: var(--paper); padding: 3rem 2rem; text-align: center; border-top: 3px solid var(--ink); }
+  footer p { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 500; }
+  footer span { color: var(--orange-bright); font-weight: 700; }
+  footer .small { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-top: 0.7rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+    cursor: zoom-out;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: default;
+  }
+  .lightbox-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    border: 3px solid var(--cream);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: block;
+  }
+  .lightbox-toolbar {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    display: flex;
+    gap: 0.8rem;
+  }
+  .lb-btn {
+    background: var(--orange);
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 0.6rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s;
+  }
+  .lb-btn:hover { background: var(--orange-bright); }
+  .lb-btn.close { background: var(--white); color: var(--ink); }
+  .lb-btn.close:hover { background: var(--cream); }
+  .lightbox-caption {
+    color: var(--white);
+    text-align: center;
+    margin-top: 1rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s ease-out; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .hero h1, .hero-tagline, .hero-stats, .hero-contact-row, .hero-portrait-wrap, .hero-top { animation: fadeUp 0.9s ease-out backwards; }
+  .hero-top { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.15s; }
+  .hero-tagline { animation-delay: 0.3s; }
+  .hero-stats { animation-delay: 0.45s; }
+  .hero-contact-row { animation-delay: 0.6s; }
+  .hero-portrait-wrap { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <div class="nav-logo">М. <span>Гульчехра</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">Туралы</a></li>
+      <li><a href="#credo">Кредо</a></li>
+      <li><a href="#education">Білім</a></li>
+      <li><a href="#publications">Жарияланым</a></li>
+      <li><a href="#achievements">Жетістіктер</a></li>
+      <li><a href="#documents">Құжаттар</a></li>
+      <li><a href="#digital">Цифрлық</a></li>
+      <li><a href="#contact">Байланыс</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-top">
+      <div class="dot"></div>
+      <span>«Ақмарал» бөбекжай-бақшасы</span>
+      <span>•</span>
+      <span>Жетісай ауданы</span>
+      <span>•</span>
+      <span>2026</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>
+          Молдабек<br>
+          <span class="italic">Гульчехра</span><br>
+          <span class="underline">Ақынқызы</span>
+        </h1>
+        <p class="hero-tagline">
+          Тәрбиеші • Педагог-модератор. <strong>Дәстүр</strong> мен <strong>заманауи технологияларды</strong> үйлестіре отырып, болашақтың зерек ұрпағын тәрбиелеймін.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">20</div>
+            <div class="stat-label">жыл өтіл</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">300+</div>
+            <div class="stat-label">тәрбиеленуші</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">марапат</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">01</div>
+            <div class="stat-label">жарияланым</div>
+          </div>
+        </div>
+        <div class="hero-contact-row">
+          <a href="tel:+77784659836" class="hc-item">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            +7 778 465 98 36
+          </a>
+          <a href="mailto:gulchikhra.moldabek@mail.ru" class="hc-item">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            gulchikhra.moldabek@mail.ru
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-portrait-wrap">
+        <div class="portrait-deco"></div>
+        <div class="portrait">
+          <img src="images/01_personal_photo.jpg" alt="Молдабек Гульчехра Ақынқызы">
+        </div>
+        <div class="portrait-badge">20 жыл өтіл</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Заманауи тәрбиеші <span class="sep">✦</span></span>
+    <span>Жасанды интеллект <span class="sep">✦</span></span>
+    <span>20 жыл тәжірибе <span class="sep">✦</span></span>
+    <span>Педагог-модератор <span class="sep">✦</span></span>
+    <span>Ертегі әлемі <span class="sep">✦</span></span>
+    <span>Цифрлық сауаттылық <span class="sep">✦</span></span>
+    <span>Заманауи тәрбиеші <span class="sep">✦</span></span>
+    <span>Жасанды интеллект <span class="sep">✦</span></span>
+    <span>20 жыл тәжірибе <span class="sep">✦</span></span>
+    <span>Педагог-модератор <span class="sep">✦</span></span>
+    <span>Ертегі әлемі <span class="sep">✦</span></span>
+    <span>Цифрлық сауаттылық <span class="sep">✦</span></span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">01 — Туралы</div>
+      <h2 class="section-title">Менің <span class="italic">педагогикалық</span> жолым</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Менің есімім — <mark>Молдабек Гульчехра Ақынқызы</mark>. 1976 жылы 9 қазанда Түркістан облысында дүниеге келдім. Жетісай педагогикалық училищесі мен колледжінде «Мектепке дейінгі тәрбие» мамандығы бойынша білім алып, 1993 жылы «Мектепке дейінгі мекемелердегі тәрбиеші» біліктілігін алдым.</p>
+        <p>2006 жылдан бері <mark>«Ақмарал» бөбекжай-бақшасында</mark> (бұрынғы атауы — «Қуаныш») тәрбиеші болып еңбек етіп келемін. Қазіргі күнге дейін 20 жыл бойы осы ұжымда қызмет етіп, үш жүзден астам балаға өмір табалдырығын ашуға көмектестім.</p>
+        <p>Заман өзгерсе де, балаларға деген сүйіспеншілік пен олардың жан-жақты дамуына деген жауапкершілік ешқашан өзгермейді. Бірақ ұстаздың құралдары өзгереді — мен бүгінгі күнде <mark>Жасанды интеллект, интерактивті құралдар, цифрлық ресурстарды</mark> балалармен жұмыста белсенді қолданамын. 2022 жылы республикалық «QAZAQ BILIMI» журналында «Шалқан ертегісі» атты әдістемелік мақалам жарық көрді.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1993</div>
+          <div class="tl-title">Білім алу</div>
+          <div class="tl-desc">Жетісай педагогикалық колледжі, «Мектепке дейінгі тәрбие» мамандығы</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2006</div>
+          <div class="tl-title">«Қуаныш» бөбекжайда жұмыс басталуы</div>
+          <div class="tl-desc">Бөбекжай-бақшасында тәрбиеші ретінде қызметке кірісу</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2020</div>
+          <div class="tl-title">Аудандық байқау — III орын</div>
+          <div class="tl-desc">«Ең үздік әзірленген флипчарт-сабақтар» байқауы. «Өрлеу» сертификаты — 72 сағат</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2022</div>
+          <div class="tl-title">Республикалық жарияланым</div>
+          <div class="tl-desc">«QAZAQ BILIMI» журналында «Шалқан ертегісі» мақаласы</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">«Модератор» санаты + ПедИдея байқауы</div>
+          <div class="tl-desc">Біліктілік куәлігі (5 қараша 2024) + Облыстық байқау — III орын</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">«Үздік педагог» байқауы</div>
+          <div class="tl-desc">Аудандық кезеңге қатысу + Наурыз мерекесіне алғыс хат</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="credo" id="credo">
+  <div class="container">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">02 — Кәсіби кредо</div>
+      <h2 class="section-title">Менің <span class="italic" style="color:var(--orange-bright)">ұстанымым</span></h2>
+    </div>
+    <div class="credo-content">
+      <p class="credo-text">
+        Заманауи тәрбиеші — бір қолы <span class="hi">дәстүрде</span>, бір қолы <span class="hi">болашақта</span> тұратын ұстаз. 20 жыл бойы балалармен жұмыс істей келе, мен бір нәрсеге сенімді болдым: бала <span class="hi">ертегі әлемінен</span> де, <span class="hi">цифрлық әлемнен</span> де қызық таба алады, егер ұстаз оған жол сала білсе.
+      </p>
+      <div class="credo-signature">Молдабек Гульчехра</div>
+    </div>
+  </div>
+</section>
+
+<section class="education" id="education">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">03 — Білім және біліктілік</div>
+      <h2 class="section-title">Кәсіби <span class="italic">негіз</span></h2>
+      <p class="section-intro">Педагогикалық білім — менің кәсіби жолымның бастауы. 1993 жылы Жетісай педагогикалық колледжін бітіріп, біліктілікті арттыруды жалғастырамын.</p>
+    </div>
+    <div class="doc-grid">
+      <div class="doc-card" data-img="images/02_diploma_1993.jpg" data-caption="Диплом — Жетісай педагогикалық колледжі, 1993 ж">
+        <div class="doc-image">
+          <img src="images/02_diploma_1993.jpg" alt="Диплом 1993">
+          <span class="zoom-hint">🔍 Үлкейту</span>
+        </div>
+        <div class="doc-content">
+          <div class="doc-tag">1993</div>
+          <h3 class="doc-title">Педагогикалық диплом</h3>
+          <p class="doc-info">Жетісай педагогикалық колледжі<br>«Мектепке дейінгі тәрбие» мамандығы<br>«Мектепке дейінгі мекемелердегі тәрбиеші» біліктілігі<br><strong>Тіркеу №10934</strong></p>
+        </div>
+      </div>
+
+      <div class="doc-card" data-img="images/04_orleu_cert.jpg" data-caption="«Өрлеу» біліктілікті арттыру сертификаты — 72 сағат, 2020 ж">
+        <div class="doc-image">
+          <img src="images/04_orleu_cert.jpg" alt="Өрлеу сертификаты">
+          <span class="zoom-hint">🔍 Үлкейту</span>
+        </div>
+        <div class="doc-content">
+          <div class="doc-tag">2020 · 72 сағат</div>
+          <h3 class="doc-title">«Өрлеу» сертификаты</h3>
+          <p class="doc-info">«Мектепке дейінгі білім беру мазмұнын жаңарту жағдайындағы әдістемелік жұмыстың ұйымдастырушылық педагогикалық аспектілері»<br><strong>Тіркеу №0393335</strong></p>
+        </div>
+      </div>
+
+      <div class="doc-card" data-img="images/03_moderator_cert.jpg" data-caption="«Модератор» біліктілік куәлігі — 05.11.2024 ж">
+        <div class="doc-image">
+          <img src="images/03_moderator_cert.jpg" alt="Модератор куәлігі">
+          <span class="zoom-hint">🔍 Үлкейту</span>
+        </div>
+        <div class="doc-content">
+          <div class="doc-tag">2024</div>
+          <h3 class="doc-title">«Модератор» біліктілік куәлігі</h3>
+          <p class="doc-info">Мектепке дейінгі тәрбие мен білім беру саласында білім мен біліктілігін <strong>жоғары дәрежеде</strong> көрсеткені үшін.<br>Берілген күні: <strong>05.11.2024 ж</strong>, Тіркеу № 69 ж/қ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="publication" id="publications">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">04 — Жарияланым</div>
+      <h2 class="section-title">Республикалық <span class="italic">журналдағы</span> мақала</h2>
+      <p class="section-intro">«QAZAQ BILIMI» — Қазақстан Республикасының ғылыми-әдістемелік, педагогикалық журналы. Менің авторлық әдістемелік әзірлемем 2022 жылы осы беделді басылымда жарық көрді.</p>
+    </div>
+
+    <div class="pub-feature">
+      <div class="pub-cover" data-img="images/09_journal_cover.jpg" data-caption="QAZAQ BILIMI журналы — №02 (53), 2022 ж">
+        <img src="images/09_journal_cover.jpg" alt="QAZAQ BILIMI журнал мұқабасы">
+      </div>
+      <div>
+        <div class="pub-tag">Республикалық деңгей</div>
+        <h3 class="pub-title">«Шалқан ертегісі»</h3>
+        <p class="pub-meta">QAZAQ BILIMI журналы · №02 (53) · 2022 ж, ақпан · 24-бет</p>
+        <p class="pub-desc">
+          Кіріктірілген сабақ әзірлемесі: «Шалқан» ертегісі арқылы балалардың ауызекі сөйлеуін, сөздік қорын, шығармашылық қабілеттерін дамыту. Сабақ жоспары толық мақсаттары, кезеңдері, балалармен диалог үлгілерімен қоса берілген.
+        </p>
+        <button class="pub-article-btn" data-img="images/10_journal_article.jpg" data-caption="«Шалқан ертегісі» мақаласы — QAZAQ BILIMI, №02 (53), 2022 ж, 24-бет">
+          📖 Мақаланы оқу →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="achievements" id="achievements">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">05 — Жетістіктер</div>
+      <h2 class="section-title">Марапаттар мен <span class="italic">жеңістер</span></h2>
+      <p class="section-intro">Әр марапаттың артында балалармен жүргізілген тынымсыз еңбек тұр. Аудандық, облыстық, республикалық деңгейдегі жетістіктерім.</p>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card" data-img="images/14_khantalapay.jpg" data-caption="«ХАНТАЛАПАЙ» байқауы — II орын, аудандық кезең">
+        <div class="ach-img-wrap"><img src="images/14_khantalapay.jpg" alt="Ханталапай II орын"></div>
+        <div class="ach-body">
+          <div class="ach-place-row">
+            <div class="ach-place">II</div>
+            <span class="ach-year">Аудандық</span>
+          </div>
+          <div class="ach-name">«ХАНТАЛАПАЙ» байқауы</div>
+          <div class="ach-desc">Аудандық кезең, II дәрежелі диплом. Мектепке дейінгі балалардың ұлттық қимыл ойындарға қызығушылығын ояту, қазақ халқының салт-дәстүрі мен мәдениетіне мақтаныш сезімін қалыптастыру. «Ақмарал» бөбекжайының «Балапан» тобының жетекшісі ретінде.</div>
+        </div>
+      </div>
+
+      <div class="ach-card" data-img="images/06_pedideya_2024.jpg" data-caption="«Педагогикалық идеялар фестивалі» — III орын, 2024 ж">
+        <div class="ach-img-wrap"><img src="images/06_pedideya_2024.jpg" alt="ПедИдея 2024"></div>
+        <div class="ach-body">
+          <div class="ach-place-row">
+            <div class="ach-place">III</div>
+            <span class="ach-year">2024</span>
+          </div>
+          <div class="ach-name">«Педагогикалық идеялар фестивалі»</div>
+          <div class="ach-desc">Облыстық байқаудың аудандық кезеңі. Жетісай ауданының білім бөлімі.</div>
+        </div>
+      </div>
+
+      <div class="ach-card" data-img="images/05_flipchart_2020.jpg" data-caption="«Ең үздік әзірленген флипчарт-сабақтар» — III орын, 2020 ж">
+        <div class="ach-img-wrap"><img src="images/05_flipchart_2020.jpg" alt="Флипчарт 2020"></div>
+        <div class="ach-body">
+          <div class="ach-place-row">
+            <div class="ach-place">III</div>
+            <span class="ach-year">2020</span>
+          </div>
+          <div class="ach-name">«Ең үздік флипчарт-сабақтар»</div>
+          <div class="ach-desc">Мақтарал ауданының білім бөлімі. Интерактивті технологияларды енгізу мақсатында өткізілген аудандық сырттай байқау.</div>
+        </div>
+      </div>
+
+      <div class="ach-card" data-img="images/07_adal_azamat.jpg" data-caption="«Адал азамат» — Қаржы қауіпсіздігі диктанты, 70 балл, 2025 ж">
+        <div class="ach-img-wrap"><img src="images/07_adal_azamat.jpg" alt="Адал азамат"></div>
+        <div class="ach-body">
+          <div class="ach-place-row">
+            <div class="ach-place">★</div>
+            <span class="ach-year">2025</span>
+          </div>
+          <div class="ach-name">«Адал азамат» сертификаты</div>
+          <div class="ach-desc">Қаржы қауіпсіздігі бойынша республикалық диктант. Halyk Bank ұйымдастырған. 70 балл.</div>
+        </div>
+      </div>
+
+      <div class="ach-card" data-img="images/08_nauryz_letter.jpg" data-caption="Наурыз мерекесіне алғыс хат — «Ақмарал» бөбекжайы, 2026 ж">
+        <div class="ach-img-wrap"><img src="images/08_nauryz_letter.jpg" alt="Алғыс хат"></div>
+        <div class="ach-body">
+          <div class="ach-place-row">
+            <div class="ach-place">✦</div>
+            <span class="ach-year">2026</span>
+          </div>
+          <div class="ach-name">Наурыз алғыс хаты</div>
+          <div class="ach-desc">«Ақмарал» бөбекжай балабақшасынан. Жас ұрпаққа сіңірген жемісті жұмыс үшін.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="education" id="documents">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">06 — Жеке құжаттар</div>
+      <h2 class="section-title">Жеке басын <span class="italic">куәландыратын</span> құжаттар</h2>
+      <p class="section-intro">Жеке басын куәландыратын құжат пен еңбек кітапшасы. Қауіпсіздік үшін сезімтал деректер (ЖСН, құжат нөмірлері) көлеңкеленген. Толық нұсқасы сұрау бойынша берілуі мүмкін.</p>
+    </div>
+    <div class="doc-grid">
+      <div class="doc-card" data-img="images/11_id_card_safe.jpg" data-caption="Жеке куәлік (құпия деректер көлеңкеленген)">
+        <div class="doc-image">
+          <img src="images/11_id_card_safe.jpg" alt="Жеке куәлік">
+          <span class="zoom-hint">🔍 Үлкейту</span>
+        </div>
+        <div class="doc-content">
+          <div class="doc-tag">2024 — 2034</div>
+          <h3 class="doc-title">Жеке куәлік</h3>
+          <p class="doc-info">Молдабек Гульчехра Ақынқызы<br>Туған күні: 09.10.1976<br>Туған жері: Түркістан облысы<br>Ұлты: қазақ<br>Берген орган: <strong>ҚР Ішкі істер министрлігі</strong></p>
+        </div>
+      </div>
+
+      <div class="doc-card" data-img="images/12_workbook_safe.jpg" data-caption="Еңбек кітапшасы — титулдық бет">
+        <div class="doc-image">
+          <img src="images/12_workbook_safe.jpg" alt="Еңбек кітапшасы">
+          <span class="zoom-hint">🔍 Үлкейту</span>
+        </div>
+        <div class="doc-content">
+          <div class="doc-tag">2006</div>
+          <h3 class="doc-title">Еңбек кітапшасы</h3>
+          <p class="doc-info">Молдабек Гульчехра Ақанқызы<br>Туған жылы: 09.10.1976<br>Толтырылған датасы: <strong>05.09.2006 ж</strong></p>
+        </div>
+      </div>
+
+      <div class="doc-card" data-img="images/13_workbook_records.jpg" data-caption="Еңбек кітапшасы — жұмыс жазбалары">
+        <div class="doc-image">
+          <img src="images/13_workbook_records.jpg" alt="Еңбек кітапшасы 2 бет">
+          <span class="zoom-hint">🔍 Үлкейту</span>
+        </div>
+        <div class="doc-content">
+          <div class="doc-tag">Жұмыс жазбалары</div>
+          <h3 class="doc-title">Еңбек өтілі расталған</h3>
+          <p class="doc-info">2006 жылдан бері «Қуаныш» (қазіргі <strong>«Ақмарал»</strong>) бөбекжай-балабақшасында тәрбиеші болып үздіксіз қызмет етеді.<br>Жалпы өтіл: <strong>20 жыл</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="activities" id="activities">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">07 — Педагогикалық қызмет</div>
+      <h2 class="section-title">Күнделікті жұмыстан <span class="italic">көріністер</span></h2>
+      <p class="section-intro">«Үйшік» ертегісі бойынша кіріктірілген ұйымдастырылған іс-әрекет, балалармен күнделікті дидактикалық жұмыс, ата-аналармен өзара іс-қимыл, әдістемелік қызмет.</p>
+    </div>
+
+    <div class="activity-block">
+      <h3>«Үйшік» ертегісі бойынша ұйымдастырылған іс-әрекет</h3>
+      <div class="gallery">
+        <div class="g-item" data-img="images/24_kids_uishik1.jpg" data-caption="«Үйшік» іс-әрекеті — кейіпкерлермен топ суреті">
+          <img src="images/24_kids_uishik1.jpg" alt="Үйшік сабағы" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/25_kids_uishik2.jpg" data-caption="«Үйшік» іс-әрекеті — балалар үйшік алдында">
+          <img src="images/25_kids_uishik2.jpg" alt="Үйшік үйі" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/27_kids_ball.jpg" data-caption="«Үйшік» іс-әрекеті — допты сұрақ-жауап ойыны">
+          <img src="images/27_kids_ball.jpg" alt="Доппен ойын" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/26_kids_jar.jpg" data-caption="«Үйшік» іс-әрекеті — танымдық тәжірибе">
+          <img src="images/26_kids_jar.jpg" alt="Танымдық тәжірибе" class="g-photo">
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-block">
+      <h3>Балалармен жұмыс — шығармашылық сабақтар</h3>
+      <div class="gallery">
+        <div class="g-item" data-img="images/20_kids_nitka.jpg" data-caption="Ниткография әдісімен — қыс ағаштары">
+          <img src="images/20_kids_nitka.jpg" alt="Ниткография" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/23_kids_applique.jpg" data-caption="Аппликация сабағы — көлік үстінде">
+          <img src="images/23_kids_applique.jpg" alt="Аппликация" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/21_kids_construct.jpg" data-caption="Шығармашылық сабақ — сюжетті ойын">
+          <img src="images/21_kids_construct.jpg" alt="Шығармашылық" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/22_kids_autumn.jpg" data-caption="«Алтын күз» мерекесі — балалар спектаклі">
+          <img src="images/22_kids_autumn.jpg" alt="Алтын күз" class="g-photo">
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-block">
+      <h3>Әдістемелік жұмыс</h3>
+      <div class="gallery">
+        <div class="g-item" data-img="images/15_photo_flag.jpg" data-caption="Алғыс хат табыс ету сәті — Қазақстан рәміздері фонында">
+          <img src="images/15_photo_flag.jpg" alt="Алғыс хат" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/18_photo_with_director.jpg" data-caption="Балабақша басшысымен — алғыс хат табыс ету">
+          <img src="images/18_photo_with_director.jpg" alt="Басшымен" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/17_photo_flipchart.jpg" data-caption="«Жолда жүру ережелері» — авторлық флипчарт көрнекілігі">
+          <img src="images/17_photo_flipchart.jpg" alt="Флипчарт" class="g-photo">
+        </div>
+        <div class="g-item" data-img="images/16_photo_parents.jpg" data-caption="Ата-аналармен дөңгелек үстел — тренинг">
+          <img src="images/16_photo_parents.jpg" alt="Ата-аналар жиналысы" class="g-photo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="methodology">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">08 — Әдістеме</div>
+      <h2 class="section-title">Қолданатын <span class="italic">әдіс-тәсілдер</span></h2>
+      <p class="section-intro">Дәстүрлі әдістерді заманауи технологиялармен үйлестіре отырып, балаларға қызықты, әсерлі, нәтижелі тәрбиелік-білімдік орта жасаймын.</p>
+    </div>
+    <div class="m-grid">
+      <div class="m-card"><div class="m-icon">🤖</div><h3 class="m-name">Жасанды интеллект</h3><p class="m-desc">Ертегілерді визуализациялау, дидактикалық материалдар жасау</p></div>
+      <div class="m-card"><div class="m-icon">💻</div><h3 class="m-name">АКТ құралдары</h3><p class="m-desc">Интерактивті тақта, цифрлық оқулықтар, мультимедиа</p></div>
+      <div class="m-card"><div class="m-icon">🎭</div><h3 class="m-name">Қуыршақ театры</h3><p class="m-desc">Балалардың ауызекі сөйлеуін, шығармашылығын дамыту</p></div>
+      <div class="m-card"><div class="m-icon">🧠</div><h3 class="m-name">ТРИЗ</h3><p class="m-desc">Шығармашыл ойлау, мәселе шешу қабілетін дамыту әдісі</p></div>
+      <div class="m-card"><div class="m-icon">📝</div><h3 class="m-name">Мнемотехника</h3><p class="m-desc">Есте сақтау дағдыларын суреттер, символдар арқылы дамыту</p></div>
+      <div class="m-card"><div class="m-icon">🎨</div><h3 class="m-name">Ниткография</h3><p class="m-desc">Жіппен бояу — ұсақ моторика мен шығармашылықты дамыту</p></div>
+      <div class="m-card"><div class="m-icon">🎲</div><h3 class="m-name">Дидактикалық ойындар</h3><p class="m-desc">Ойын арқылы оқыту, танымдық белсенділікті арттыру</p></div>
+      <div class="m-card"><div class="m-icon">🌿</div><h3 class="m-name">Кіріктірілген оқыту</h3><p class="m-desc">Бірнеше білім салаларын біріктіріп, кешенді дамыту</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="digital" id="digital">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">09 — Цифрлық материалдар</div>
+      <h2 class="section-title">Менің цифрлық <span class="italic">туындыларым</span></h2>
+      <p class="section-intro">Жасанды интеллект көмегімен жасалған бейне материалдар, интерактивті тапсырмалар, дидактикалық ойындар — балалардың цифрлық сауаттылығын ерте дамыту мақсатында жасалған.</p>
+    </div>
+    <div class="d-grid">
+      <a href="#" class="d-card" onclick="openVideo(event)"><div class="d-icon">🎬</div><h3 class="d-title">«Үйшік» ертегісі — ЖИ нұсқасы</h3><p class="d-desc">Жасанды интеллект арқылы дайындалған «Үйшік» ертегісінің визуалды нұсқасы. Балаларға арналған мультфильм.</p><span class="d-link">КӨРУ →</span></a>
+      <a href="games/01_kharaktery.html" class="d-card"><div class="d-icon">🎮</div><h3 class="d-title">«Кейіпкерлерді тап»</h3><p class="d-desc">Балалар ертегі кейіпкерлерін суреттер арқылы тануды үйренеді. Интерактивті танымдық ойын.</p><span class="d-link">ОЙНАУ →</span></a>
+      <a href="games/02_ne_artyq.html" class="d-card"><div class="d-icon">🧩</div><h3 class="d-title">«Не артық?»</h3><p class="d-desc">Танымдық белсенділікті дамытатын логикалық ойын. Балалар топтан артық суретті табуы керек.</p><span class="d-link">ОЙНАУ →</span></a>
+      <a href="games/03_tuster.html" class="d-card"><div class="d-icon">🎨</div><h3 class="d-title">«Түстерді үйрен»</h3><p class="d-desc">9 негізгі түсті табу арқылы балалар түсті танып, есте сақтауды үйренеді.</p><span class="d-link">ОЙНАУ →</span></a>
+      <a href="games/04_sandar.html" class="d-card"><div class="d-icon">🔢</div><h3 class="d-title">Сандық карточкалар</h3><p class="d-desc">1-ден 5-ке дейін санауды үйрететін интерактивті ойын. Объектілерді санап, дұрыс санды табу.</p><span class="d-link">ОЙНАУ →</span></a>
+      <a href="games/05_kezenmen.html" class="d-card"><div class="d-icon">📚</div><h3 class="d-title">«Кезеңмен қой»</h3><p class="d-desc">«Үйшік» ертегісінің оқиғаларын дұрыс ретімен орналастыру арқылы логикалық ойлауды дамытады.</p><span class="d-link">ОЙНАУ →</span></a>
+      <a href="games/06_kitap.html" class="d-card"><div class="d-icon">📖</div><h3 class="d-title">Цифрлық ертегі кітабы</h3><p class="d-desc">«Үйшік» ертегісінің интерактивті форматтағы цифрлық кітабы — 7 бет, суреттер мен мәтін.</p><span class="d-link">ҚАРАУ →</span></a>
+      <a href="games/07_refleksiya.html" class="d-card"><div class="d-icon">😊</div><h3 class="d-title">Балалардың рефлексиясы</h3><p class="d-desc">Смайликтер арқылы балалар сабақтың қалай өткенін бағалай алады. Заманауи кері байланыс құралы.</p><span class="d-link">КӨРУ →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">10 — Байланыс</div>
+      <h2 class="section-title">Байланысу <span class="italic">үшін</span></h2>
+      <p class="section-intro" style="margin-left:auto; margin-right:auto; color:var(--white);">Кез келген ыңғайлы тәсілмен хабарласыңыз. Карточкаларды басыңыз — қосымша автоматты ашылады.</p>
+    </div>
+    <div class="contact-grid">
+      <a href="tel:+77784659836" class="c-card">
+        <div class="c-icon">📞</div>
+        <div class="c-label">Телефон</div>
+        <div class="c-value">+7 778 465 98 36</div>
+        <div class="c-action">Қоңырау шалу →</div>
+      </a>
+      <a href="https://wa.me/77784659836" rel="noopener" class="c-card">
+        <div class="c-icon">💬</div>
+        <div class="c-label">WhatsApp</div>
+        <div class="c-value">+7 778 465 98 36</div>
+        <div class="c-action">Хабарлама жазу →</div>
+      </a>
+      <a href="mailto:gulchikhra.moldabek@mail.ru" class="c-card">
+        <div class="c-icon">✉</div>
+        <div class="c-label">Электронды пошта</div>
+        <div class="c-value">gulchikhra.<br>moldabek@mail.ru</div>
+        <div class="c-action">Пошта жазу →</div>
+      </a>
+      <a href="https://instagram.com/gulsehra_moldabek.76" rel="noopener" class="c-card">
+        <div class="c-icon">📷</div>
+        <div class="c-label">Instagram</div>
+        <div class="c-value">@gulsehra_<br>moldabek.76</div>
+        <div class="c-action">Парақшаға өту →</div>
+      </a>
+      <div class="c-card">
+        <div class="c-icon">🏛</div>
+        <div class="c-label">Жұмыс орны</div>
+        <div class="c-value">«Ақмарал»<br>бөбекжай-бақшасы</div>
+        <div class="c-action">Жетісай ауданы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Молдабек Гульчехра Ақынқызы • <span>Е-портфолио</span></p>
+  <p class="small">«Мектепке дейінгі ұйымның үздік педагогі» байқауы</p>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="lightbox" id="videoModal" style="cursor: zoom-out;">
+  <div class="lightbox-content" onclick="event.stopPropagation()" style="cursor: default; max-width: 1100px; width: 100%;">
+    <div class="lightbox-toolbar">
+      <button class="lb-btn close" onclick="closeVideo()">✕ ЖАБУ</button>
+    </div>
+    <video id="videoPlayer" controls preload="metadata" style="width: 100%; max-height: 80vh; border: 3px solid #FFF7ED; background: #000; display: block;">
+      <source src="video/uishik.mp4" type="video/mp4">
+      Сіздің браузеріңіз видеоны қолдамайды.
+    </video>
+    <div class="lightbox-caption">«Үйшік» ертегісі — Жасанды интеллект арқылы дайындалған нұсқа</div>
+  </div>
+</div>
+
+<script>
+  function openVideo(event) {
+    event.preventDefault();
+    document.getElementById('videoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const v = document.getElementById('videoPlayer');
+    v.currentTime = 0;
+    v.play().catch(() => {}); // some browsers block autoplay
+  }
+  function closeVideo() {
+    document.getElementById('videoModal').classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('videoPlayer').pause();
+  }
+  document.getElementById('videoModal').addEventListener('click', closeVideo);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVideo();
+  });
+</script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <div class="lightbox-toolbar">
+      <a class="lb-btn" id="lb-download" download>⬇ ЖҮКТЕУ</a>
+      <button class="lb-btn close" onclick="closeLightbox()">✕ ЖАБУ</button>
+    </div>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<script>
+  // Scroll reveal
+  const sections = document.querySelectorAll('section');
+  sections.forEach(s => { if (!s.classList.contains('hero')) s.classList.add('reveal'); });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+  // Smooth nav scroll
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const downloadBtn = document.getElementById('lb-download');
+
+  function openLightbox(imgSrc, caption) {
+    lightboxImg.src = imgSrc;
+    lightboxCaption.textContent = caption;
+    downloadBtn.href = imgSrc;
+    downloadBtn.download = caption.replace(/[^a-zA-Z0-9а-яА-ЯәіңғүұқөһӘІҢҒҮҰҚӨҺ\s]/g, '').replace(/\s+/g, '_') + '.jpg';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Click on lightbox bg closes it
+  lightbox.addEventListener('click', closeLightbox);
+
+  // ESC closes lightbox
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Bind to all cards with data-img
+  document.querySelectorAll('[data-img]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const img = el.dataset.img;
+      const caption = el.dataset.caption || '';
+      openLightbox(img, caption);
+    });
+    el.style.cursor = 'pointer';
+  });
+</script>
+
+</body>
+</html>

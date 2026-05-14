@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>«Кезеңмен қой» — Үйшік ертегісі</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: linear-gradient(135deg, #FEF3C7 0%, #FFFAF3 50%, #D4EDDA 100%);
+    min-height: 100vh;
+    padding: 1.5rem;
+    color: #1A1A1A;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 0.5rem; color: #E8590C; font-weight: 800; }
+  .subtitle { text-align: center; font-size: 1.1rem; font-weight: 600; color: #4A4A4A; margin-bottom: 2rem; }
+  .info {
+    background: #1A1A1A;
+    color: #FFF7ED;
+    padding: 1.2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 5px 5px 0 #E8590C;
+    border: 3px solid #1A1A1A;
+  }
+  .info-text { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; }
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .event-card {
+    background: #fff;
+    border: 3px solid #1A1A1A;
+    box-shadow: 4px 4px 0 #1A1A1A;
+    padding: 1.2rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .event-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #E8590C; }
+  .event-card.selected { background: #FFE5D0; border-color: #E8590C; box-shadow: 4px 4px 0 #E8590C; }
+  .event-card.placed {
+    pointer-events: none;
+    opacity: 0.55;
+    background: #D4EDDA;
+    border-color: #1B8B5A;
+    box-shadow: 4px 4px 0 #1B8B5A;
+  }
+  .event-emoji { font-size: 2.2rem; flex-shrink: 0; }
+  .event-text { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; flex-grow: 1; }
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (min-width: 700px) { .slots { grid-template-columns: repeat(3, 1fr); } }
+  .slot {
+    background: #FFFAF3;
+    border: 3px dashed #1A1A1A;
+    padding: 1rem 0.8rem;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .slot.filled {
+    background: #fff;
+    border-style: solid;
+    box-shadow: 4px 4px 0 #1A1A1A;
+  }
+  .slot.correct {
+    background: #D4EDDA;
+    border-color: #1B8B5A;
+    box-shadow: 4px 4px 0 #1B8B5A;
+  }
+  .slot-num {
+    width: 32px;
+    height: 32px;
+    background: #1A1A1A;
+    color: #FFF7ED;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .slot.filled .slot-num { background: #1B8B5A; }
+  .slot-content { font-size: 0.85rem; font-weight: 600; flex-grow: 1; min-height: 30px; }
+  .slot-content .em { font-size: 1.5rem; }
+  .controls { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+  .btn {
+    background: #E8590C;
+    color: #fff;
+    border: 3px solid #1A1A1A;
+    padding: 0.9rem 1.5rem;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #1A1A1A;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #1A1A1A; }
+  .btn.secondary { background: #fff; color: #1A1A1A; }
+  .win-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 100; padding: 1rem; }
+  .win-modal.active { display: flex; }
+  .win-content { background: #FFF7ED; border: 4px solid #1A1A1A; padding: 2.5rem 2rem; text-align: center; max-width: 480px; box-shadow: 10px 10px 0 #E8590C; }
+  .win-emoji { font-size: 5rem; margin-bottom: 1rem; }
+  .win-title { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 800; color: #E8590C; margin-bottom: 0.8rem; }
+  .win-text { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>«Кезеңмен қой»</h1>
+  <p class="subtitle">Үйшік ертегісінің оқиғаларын дұрыс ретімен орналастырыңыз</p>
+
+  <div class="info">
+    <div class="info-text">📖 Сол жақтан оқиғаны таңдап, төмендегі дұрыс орынға қойыңыз</div>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif; font-size:1.3rem; margin-bottom:0.8rem;">Оқиғалар:</h3>
+  <div class="events-list" id="eventsList"></div>
+
+  <h3 style="font-family:'Fraunces',serif; font-size:1.3rem; margin-bottom:0.8rem; margin-top:1.5rem;">Дұрыс рет:</h3>
+  <div class="slots" id="slots"></div>
+
+  <div class="controls">
+    <button class="btn" onclick="checkOrder()">✓ Тексеру</button>
+    <button class="btn secondary" onclick="restart()">🔄 Жаңадан</button>
+  </div>
+</div>
+
+<div class="win-modal" id="winModal">
+  <div class="win-content">
+    <div class="win-emoji">🏆</div>
+    <div class="win-title" id="winTitle">Тамаша!</div>
+    <div class="win-text" id="winText"></div>
+    <button class="btn" onclick="restart()">Қайтадан ойнау</button>
+  </div>
+</div>
+
+<script>
+  const events = [
+    { emoji: '🏠', text: 'Тышқан үйшік табады', order: 1 },
+    { emoji: '🐭', text: 'Бақа үйшікке келеді', order: 2 },
+    { emoji: '🐰', text: 'Қоян мен Түлкі қосылады', order: 3 },
+    { emoji: '🐺', text: 'Қасқыр да үйшікке кіреді', order: 4 },
+    { emoji: '🐻', text: 'Аю үйшікті бұзады', order: 5 },
+    { emoji: '🤝', text: 'Достар жаңа үй салады', order: 6 },
+  ];
+
+  let selectedEvent = null;
+  let slotsState = []; // array of event objects per slot or null
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function init() {
+    selectedEvent = null;
+    slotsState = new Array(events.length).fill(null);
+    renderEvents();
+    renderSlots();
+  }
+
+  function renderEvents() {
+    const list = document.getElementById('eventsList');
+    list.innerHTML = '';
+    const placed = slotsState.filter(s => s).map(s => s.order);
+    shuffle(events).forEach(ev => {
+      const card = document.createElement('div');
+      card.className = 'event-card';
+      if (placed.includes(ev.order)) card.classList.add('placed');
+      if (selectedEvent && selectedEvent.order === ev.order) card.classList.add('selected');
+      card.innerHTML = `<span class="event-emoji">${ev.emoji}</span><span class="event-text">${ev.text}</span>`;
+      card.onclick = () => selectEvent(ev);
+      list.appendChild(card);
+    });
+  }
+
+  function renderSlots() {
+    const slots = document.getElementById('slots');
+    slots.innerHTML = '';
+    for (let i = 0; i < events.length; i++) {
+      const slot = document.createElement('div');
+      slot.className = 'slot';
+      if (slotsState[i]) slot.classList.add('filled');
+      let content = '';
+      if (slotsState[i]) {
+        content = `<span class="em">${slotsState[i].emoji}</span> ${slotsState[i].text}`;
+      }
+      slot.innerHTML = `<div class="slot-num">${i + 1}</div><div class="slot-content">${content}</div>`;
+      slot.onclick = () => placeInSlot(i);
+      slots.appendChild(slot);
+    }
+  }
+
+  function selectEvent(ev) {
+    const placed = slotsState.filter(s => s).map(s => s.order);
+    if (placed.includes(ev.order)) return;
+    selectedEvent = ev;
+    renderEvents();
+  }
+
+  function placeInSlot(slotIdx) {
+    if (!selectedEvent) return;
+    // If slot has something, swap it back to events
+    slotsState[slotIdx] = selectedEvent;
+    selectedEvent = null;
+    renderEvents();
+    renderSlots();
+  }
+
+  function checkOrder() {
+    let correctCount = 0;
+    for (let i = 0; i < events.length; i++) {
+      if (slotsState[i] && slotsState[i].order === i + 1) correctCount++;
+    }
+    if (correctCount === events.length) {
+      document.getElementById('winTitle').textContent = '🏆 Тамаша!';
+      document.getElementById('winText').textContent = `Барлық оқиғалар дұрыс ретпен! Сіз ертегіні жақсы білесіз.`;
+      document.getElementById('winModal').classList.add('active');
+    } else if (correctCount === 0) {
+      alert('Әзірге барлық оқиғалар орналаспаған немесе ретін қарастырыңыз!');
+    } else {
+      alert(`${correctCount} оқиға дұрыс. Қалғанын тағы көріңіз!`);
+    }
+  }
+
+  function restart() {
+    document.getElementById('winModal').classList.remove('active');
+    init();
+  }
+
+  init();
+</script>
+
+</body>
+</html>
